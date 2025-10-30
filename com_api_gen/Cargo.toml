@@ -1,0 +1,18 @@
+[package]
+name = "com_api_gen"
+version.workspace = true
+edition.workspace = true
+
+
+[features]
+default = ["iceoryx"]
+iceoryx = []
+
+[dependencies]
+com-api-runtime-iceoryx.workspace = true
+com-api.workspace = true
+gateway_common.workspace = true
+iceoryx2.workspace = true
+
+[build-dependencies]
+abi-types-codegen.workspace = true

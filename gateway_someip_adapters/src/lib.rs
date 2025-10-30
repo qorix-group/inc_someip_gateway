@@ -9,7 +9,4 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 //
-#[test]
-fn test_hello() {
-    assert_eq!(2 + 2, 4);
-}
+pub mod covesa;

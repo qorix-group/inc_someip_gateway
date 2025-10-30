@@ -9,7 +9,21 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 //
-#[test]
-fn test_hello() {
-    assert_eq!(2 + 2, 4);
+
+#[e2e_profile = gateway_common::e2e::E2ESomeUserProfile]
+struct WindowsPosition {
+    fl: u8,
+    fr: u8,
+    rl: u8,
+    rr: u8,
+}
+
+#[e2e_profile = gateway_common::e2e::E2ESomeUserProfile2]
+struct RainSensor {
+    is_wet: bool,
+}
+
+#[e2e_profile = gateway_common::e2e::E2ESomeUserProfile]
+struct CloseWindows {
+    close: bool,
 }

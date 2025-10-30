@@ -8,8 +8,12 @@
 // <https://www.apache.org/licenses/LICENSE-2.0>
 //
 // SPDX-License-Identifier: Apache-2.0
-//
-#[test]
-fn test_hello() {
-    assert_eq!(2 + 2, 4);
-}
+
+#[cfg(feature = "lola")]
+pub use com_api_gen_lola::{Tire, VehicleInterface};
+
+#[cfg(feature = "iceoryx")]
+pub use crate::iceoryx::{
+    CloseWindows, RainConsumer, RainInterface, RainOfferedProducer, RainProducer, RainSensor,
+    WindowsConsumer, WindowsInterface, WindowsOfferedProducer, WindowsPosition, WindowsProducer,
+};
