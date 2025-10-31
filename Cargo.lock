@@ -5,7 +5,7 @@ version = 4
 [[package]]
 name = "abi-types-codegen"
 version = "0.1.0"
-source = "git+ssh://git@github.com/qorix-group/abi_tools_internal.git?rev=60e508c80e47ba966e1761a1d237435438fc2531#60e508c80e47ba966e1761a1d237435438fc2531"
+source = "git+https://github.com/qorix-group/inc_abi_compatible_datatypes.git?rev=7f2b4e050c93c96db2778994e63b1ef74982204d#7f2b4e050c93c96db2778994e63b1ef74982204d"
 dependencies = [
  "abi-types-parser",
  "anyhow",
@@ -15,7 +15,7 @@ dependencies = [
 [[package]]
 name = "abi-types-parser"
 version = "0.1.0"
-source = "git+ssh://git@github.com/qorix-group/abi_tools_internal.git?rev=60e508c80e47ba966e1761a1d237435438fc2531#60e508c80e47ba966e1761a1d237435438fc2531"
+source = "git+https://github.com/qorix-group/inc_abi_compatible_datatypes.git?rev=7f2b4e050c93c96db2778994e63b1ef74982204d#7f2b4e050c93c96db2778994e63b1ef74982204d"
 dependencies = [
  "anyhow",
  "ariadne",
