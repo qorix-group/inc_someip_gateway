@@ -10,10 +10,21 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-cc_test(
-    name = "cpp_test_main",
-    srcs = ["test_main.cpp"],
+
+"""
+Integration Tests
+"""
+
+load("@bazel_tools_python//quality:defs.bzl", "py_pytest")
+
+py_pytest(
+    name = "integration",
+    size = "medium",
+    srcs = glob(["test_*.py"]) + ["conftest.py"],
+    data = ["vsomeip-local.json"],
     deps = [
-        "@googletest//:gtest_main",  # GoogleTest dependency via Bazel Modules
+        "//src/someipd",
+        "@someip_pip//pytest",
+        "@someip_pip//someip",
     ],
 )

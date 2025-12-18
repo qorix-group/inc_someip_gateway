@@ -1,0 +1,14 @@
+{
+    "name": "eclipse-s-core",
+    "image": "ghcr.io/eclipse-score/devcontainer:latest",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "detachhead.basedpyright",
+                "akiramiyakoda.cppincludeguard",
+                "github.vscode-github-actions",
+                "streetsidesoftware.code-spell-checker"
+            ]
+        }
+    }
+}

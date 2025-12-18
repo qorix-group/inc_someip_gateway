@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # *******************************************************************************
 # Copyright (c) 2025 Contributors to the Eclipse Foundation
 #
@@ -11,24 +13,15 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-name: License Check
+set -e
 
-on:
-  pull_request_target:
-    types: [opened, reopened, synchronize]
-  merge_group:
-    types: [checks_requested]
-  push:
-    branches:
-      - main
+echo "Container for sample_client started"
 
-permissions:
-  pull-requests: write
-  issues: write
+# Add multicast route
+route add -net 224.0.0.0/4 dev eth0
 
+# Manually start up the sample_client application when the car_window_controller and gatewayd are already running
+# export VSOMEIP_CONFIGURATION=$(pwd)/tests/integration/sample_client/vsomeip.json
+# /home/source/bazel-bin/tests/integration/sample_client/sample_client
 
-jobs:
-  license-check:
-    uses: eclipse-score/cicd-workflows/.github/workflows/license-check.yml@main
-    secrets:
-      dash-api-token: ${{ secrets.ECLIPSE_GITLAB_API_TOKEN }}
+sleep infinity

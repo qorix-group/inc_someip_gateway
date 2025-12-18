@@ -11,24 +11,12 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-name: License Check
+load("@rules_cc//cc:cc_test.bzl", "cc_test")
 
-on:
-  pull_request_target:
-    types: [opened, reopened, synchronize]
-  merge_group:
-    types: [checks_requested]
-  push:
-    branches:
-      - main
-
-permissions:
-  pull-requests: write
-  issues: write
-
-
-jobs:
-  license-check:
-    uses: eclipse-score/cicd-workflows/.github/workflows/license-check.yml@main
-    secrets:
-      dash-api-token: ${{ secrets.ECLIPSE_GITLAB_API_TOKEN }}
+cc_test(
+    name = "cpp_test_main",
+    srcs = ["test_main.cpp"],
+    deps = [
+        "@googletest//:gtest_main",  # GoogleTest dependency via Bazel Modules
+    ],
+)

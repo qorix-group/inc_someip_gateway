@@ -11,24 +11,8 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-name: License Check
-
-on:
-  pull_request_target:
-    types: [opened, reopened, synchronize]
-  merge_group:
-    types: [checks_requested]
-  push:
-    branches:
-      - main
-
-permissions:
-  pull-requests: write
-  issues: write
+from someip.header import SOMEIPHeader
 
 
-jobs:
-  license-check:
-    uses: eclipse-score/cicd-workflows/.github/workflows/license-check.yml@main
-    secrets:
-      dash-api-token: ${{ secrets.ECLIPSE_GITLAB_API_TOKEN }}
+def test_dummy(someipd):
+    assert True

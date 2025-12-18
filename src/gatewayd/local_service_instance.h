@@ -1,0 +1,54 @@
+/********************************************************************************
+ * Copyright (c) 2025 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Apache License Version 2.0 which is available at
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ ********************************************************************************/
+
+#ifndef SRC_GATEWAYD_LOCAL_SERVICE_INSTANCE
+#define SRC_GATEWAYD_LOCAL_SERVICE_INSTANCE
+
+#include <memory>
+#include <vector>
+
+#include "score/mw/com/types.h"
+#include "src/gatewayd/gatewayd_config_generated.h"
+#include "src/network_service/interfaces/message_transfer.h"
+
+namespace score::someip_gateway::gatewayd {
+
+class LocalServiceInstance {
+   public:
+    LocalServiceInstance(
+        std::shared_ptr<const config::ServiceInstance> service_instance_config,
+        score::mw::com::GenericProxy&& ipc_proxy,
+        // TODO: Decouple this via an interface
+        network_service::interfaces::message_transfer::SomeipMessageTransferSkeleton&
+            someip_message_skeleton);
+
+    static Result<mw::com::FindServiceHandle> CreateAsyncLocalService(
+        std::shared_ptr<const config::ServiceInstance> service_instance_config,
+        network_service::interfaces::message_transfer::SomeipMessageTransferSkeleton&
+            someip_message_skeleton,
+        std::vector<std::unique_ptr<LocalServiceInstance>>& instances);
+
+    LocalServiceInstance(const LocalServiceInstance&) = delete;
+    LocalServiceInstance& operator=(const LocalServiceInstance&) = delete;
+    LocalServiceInstance(LocalServiceInstance&&) = delete;
+    LocalServiceInstance& operator=(LocalServiceInstance&&) = delete;
+
+   private:
+    std::shared_ptr<const config::ServiceInstance> service_instance_config_;
+    score::mw::com::GenericProxy ipc_proxy_;
+    network_service::interfaces::message_transfer::SomeipMessageTransferSkeleton&
+        someip_message_skeleton_;
+};
+}  // namespace score::someip_gateway::gatewayd
+
+#endif  // SRC_GATEWAYD_LOCAL_SERVICE_INSTANCE
